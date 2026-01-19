@@ -34,10 +34,11 @@ A beautiful, high-performance Flutter application for exploring and discovering 
 
 ## Screenshots
 
-| Movie List | Movie Details | Image Gallery |
-|-----------|---------------|---------------|
-| Browse all available movies with quick preview | View comprehensive movie information | Full-screen image viewer with zoom |
-| Shows title, director, year, and rating | Plot summary, cast, and poster carousel | Interactive pinch-to-zoom capability |
+| Movie List | Movie Details |
+|-----------|---------------|
+| ![Movie List](screenshots/movie_list.png) | ![Movie Details](screenshots/movie_details.png) |
+| Browse all available movies with quick preview | View comprehensive movie information |
+| Shows title, director, year, and rating | Plot summary, cast, and poster carousel |
 
 *Screenshots showcase the dark theme with amber accents and smooth animations*
 
