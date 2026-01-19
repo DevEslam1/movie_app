@@ -33,37 +33,7 @@ A beautiful, high-performance Flutter application for exploring and discovering 
 - **Scroll Physics**: Bouncing scroll physics for natural feel
 
 ## Screenshots
-
-| Movie List | Movie Details |
-|-----------|---------------|
-| ![Movie List](screenshots/movie_list.png) | ![Movie Details](screenshots/movie_details.png) |
-| Browse all available movies with quick preview | View comprehensive movie information |
-| Shows title, director, year, and rating | Plot summary, cast, and poster carousel |
-
-*Screenshots showcase the dark theme with amber accents and smooth animations*
-
-## Project Structure
-
-```
-lib/
-├── main.dart                    # App entry point with custom theme
-├── components/
-│   └── movie_card.dart         # Movie list card widget with animations
-├── models/
-│   └── movie.dart              # Movie data model
-├── pages/
-│   └── movie_details.dart      # Movie details page with gallery
-├── providers/
-│   └── movie_provider.dart     # State management and data loading
-└── utils/
-    └── movie_parser.dart       # Movie data parsing utilities
-
-assets/
-├── data/
-│   └── films.json             # Movie database
-├── app_icon.png               # App launcher icon
-└── logo.png                   # Header logo
-```
+<!-- Add your screenshots here to showcase the app. -->
 
 ## Getting Started
 

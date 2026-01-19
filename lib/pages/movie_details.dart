@@ -245,7 +245,7 @@ class MovieDetails extends StatelessWidget {
 }
 
 class FullScreenImage extends StatelessWidget {
-  const FullScreenImage({required this.imageUrl});
+  const FullScreenImage({super.key, required this.imageUrl});
   final String imageUrl;
 
   @override
