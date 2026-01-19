@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/utils/movie_parser.dart';
 
 class MovieProvider extends ChangeNotifier {
-  List<Movie> _movieList = [
-    // "The Shawshank Redemption",
-    // "The Godfather",
-    // "The Dark Knight",
-    // "The Godfather: Part II",
-    // "The Lord of the Rings: The Return of the King",
-    // "Pulp Fiction",
-  ];
+  List<Movie> _movieList = [];
+  bool _isLoading = false;
+  String? _errorMessage;
 
   List<Movie> get movieList => _movieList;
+  bool get isLoading => _isLoading;
+  String? get errorMessage => _errorMessage;
 
-  Future<void> loadMovies(BuildContext context) async {
+  Future<void> loadMovies() async {
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
     try {
-      final jsonString = await DefaultAssetBundle.of(context)
-          .loadString('assets/data/films.json');
+      final jsonString = await rootBundle.loadString('assets/data/films.json');
 
       final movies = MovieParser.parse(jsonString);
 
       _movieList = movies;
-
-      notifyListeners();
     } catch (e) {
-      print('Erro loading movies: $e');
+      _errorMessage = 'Error loading movies: $e';
+      debugPrint(_errorMessage);
+    } finally {
+      _isLoading = false;
+      notifyListeners();
     }
   }
-  // List<String> loadMovies() {
-  //   return _movieList;
-  // }
 }

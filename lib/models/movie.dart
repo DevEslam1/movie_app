@@ -1,6 +1,6 @@
 class Movie {
   final String title;
-  final String year;
+  final int year;
   final String rated;
   final String released;
   final String runtime;
@@ -13,8 +13,8 @@ class Movie {
   final String country;
   final String awards;
   final String poster;
-  final String metascore;
-  final String imdbRating;
+  final double metascore;
+  final double imdbRating;
   final String imdbVotes;
   final String imdbID;
   final String type;
@@ -47,27 +47,27 @@ class Movie {
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
-      title: json['Title'] as String,
-      year: json['Year'] as String,
-      rated: json['Rated'] as String,
-      released: json['Released'] as String,
-      runtime: json['Runtime'] as String,
-      genre: json['Genre'] as String,
-      director: json['Director'] as String,
-      writer: json['Writer'] as String,
-      actors: json['Actors'] as String,
-      plot: json['Plot'] as String,
-      language: json['Language'] as String,
-      country: json['Country'] as String,
-      awards: json['Awards'] as String,
-      poster: json['Poster'] as String,
-      metascore: json['Metascore'] as String,
-      imdbRating: json['imdbRating'] as String,
-      imdbVotes: json['imdbVotes'] as String,
-      imdbID: json['imdbID'] as String,
-      type: json['Type'] as String,
-      response: json['Response'] as String,
-      images: List<String>.from(json['Images'] as List),
+      title: json['Title'] ?? '',
+      year: int.tryParse(json['Year'] ?? '0') ?? 0,
+      rated: json['Rated'] ?? '',
+      released: json['Released'] ?? '',
+      runtime: json['Runtime'] ?? '',
+      genre: json['Genre'] ?? '',
+      director: json['Director'] ?? '',
+      writer: json['Writer'] ?? '',
+      actors: json['Actors'] ?? '',
+      plot: json['Plot'] ?? '',
+      language: json['Language'] ?? '',
+      country: json['Country'] ?? '',
+      awards: json['Awards'] ?? '',
+      poster: json['Poster'] ?? '',
+      metascore: double.tryParse(json['Metascore'] ?? '0.0') ?? 0.0,
+      imdbRating: double.tryParse(json['imdbRating'] ?? '0.0') ?? 0.0,
+      imdbVotes: json['imdbVotes'] ?? '',
+      imdbID: json['imdbID'] ?? '',
+      type: json['Type'] ?? '',
+      response: json['Response'] ?? '',
+      images: List<String>.from(json['Images'] ?? []),
     );
   }
 }
