@@ -32,7 +32,16 @@ A beautiful, high-performance Flutter application for exploring and discovering 
 - **Loading States**: Animated transitions between loading, error, and content states
 - **Scroll Physics**: Bouncing scroll physics for natural feel
 
-## Project Structure
+## Screenshots
+
+| Movie List | Movie Details | Image Gallery |
+|-----------|---------------|---------------|
+| Browse all available movies with quick preview | View comprehensive movie information | Full-screen image viewer with zoom |
+| Shows title, director, year, and rating | Plot summary, cast, and poster carousel | Interactive pinch-to-zoom capability |
+
+*Screenshots showcase the dark theme with amber accents and smooth animations*
+
+## Features
 
 ```
 lib/
