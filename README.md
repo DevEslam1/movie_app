@@ -33,8 +33,8 @@ A beautiful, high-performance Flutter application for exploring and discovering 
 - **Scroll Physics**: Bouncing scroll physics for natural feel
 
 ## Screenshots
-<img width="1344" height="2992" alt="Screenshot_1768865174" src="https://github.com/user-attachments/assets/e14c3f42-a165-42f6-9fb1-8e2f5d44e2ce" />
-<img width="1344" height="2992" alt="Screenshot_1768865186" src="https://github.com/user-attachments/assets/0115e51b-5096-49be-beeb-eac3c1a7331e" />
+<img width="400" height="896" alt="Screenshot_1768865174" src="https://github.com/user-attachments/assets/e14c3f42-a165-42f6-9fb1-8e2f5d44e2ce" />
+<img width="400" height="896" alt="Screenshot_1768865186" src="https://github.com/user-attachments/assets/0115e51b-5096-49be-beeb-eac3c1a7331e" />
 
 ## Getting Started
 
