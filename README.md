@@ -33,13 +33,16 @@ A beautiful, high-performance Flutter application for exploring and discovering 
 - **Scroll Physics**: Bouncing scroll physics for natural feel
 
 ## Screenshots
-<img width="1344" height="2992" alt="Screenshot_1768865174" src="https://github.com/user-attachments/assets/51717f9e-6471-45bd-815c-2daed129a9a2" />
-<img width="1344" height="2992" alt="Screenshot_1768865186" src="https://github.com/user-attachments/assets/34b32a68-bbad-4064-8f48-012af94c65c7" />
 
+| Movie List | Movie Details |
+|-----------|---------------|
+| ![Movie List](screenshots/movie_list.png) | ![Movie Details](screenshots/movie_details.png) |
+| Browse all available movies with quick preview | View comprehensive movie information |
+| Shows title, director, year, and rating | Plot summary, cast, and poster carousel |
 
 *Screenshots showcase the dark theme with amber accents and smooth animations*
 
-## Features
+## Project Structure
 
 ```
 lib/
