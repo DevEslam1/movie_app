@@ -156,9 +156,15 @@ class MovieDetails extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.grey[900],
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.grey[900]
+                : Colors.grey[100],
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.grey[800]!),
+            border: Border.all(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.grey[800]!
+                  : Colors.grey[300]!,
+            ),
           ),
           child: Text(
             movie.plot,

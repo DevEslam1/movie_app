@@ -19,13 +19,60 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Movie App',
-      theme: _buildTheme(),
+      theme: _buildLightTheme(),
+      darkTheme: _buildDarkTheme(),
+      themeMode: ThemeMode.system,
       home: const Home(),
       debugShowCheckedModeBanner: false,
     );
   }
 
-  ThemeData _buildTheme() {
+  ThemeData _buildLightTheme() {
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.light,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: Colors.amber,
+        brightness: Brightness.light,
+      ),
+      appBarTheme: AppBarTheme(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        titleTextStyle: TextStyle(
+          color: Colors.black,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      scaffoldBackgroundColor: Colors.white,
+      cardTheme: CardThemeData(
+        color: Colors.grey[100],
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+      ),
+      textTheme: TextTheme(
+        headlineSmall: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+        titleMedium: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: Colors.grey[700],
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          color: Colors.grey[600],
+        ),
+      ),
+    );
+  }
+
+  ThemeData _buildDarkTheme() {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -71,25 +118,58 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  late ScrollController _scrollController;
+  bool _showAppBar = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    bool newShowAppBar = _scrollController.position.pixels < 50;
+    if (newShowAppBar != _showAppBar) {
+      setState(() {
+        _showAppBar = newShowAppBar;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              'assets/logo.png',
-              height: 50,
-            ),
-            SizedBox(width: 12),
-            Text('Movie App'),
-          ],
-        ),
-      ),
+      appBar: _showAppBar
+          ? AppBar(
+              title: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    'assets/logo.png',
+                    height: 50,
+                  ),
+                  SizedBox(width: 12),
+                  Text('Movie App'),
+                ],
+              ),
+            )
+          : null,
       body: Consumer<MovieProvider>(
         builder: (context, movieData, _) {
           return AnimatedSwitcher(
@@ -134,6 +214,7 @@ class Home extends StatelessWidget {
                       )
                     : ListView.builder(
                         key: ValueKey('list'),
+                        controller: _scrollController,
                         padding: EdgeInsets.symmetric(vertical: 8),
                         itemCount: movieData.movieList.length,
                         itemBuilder: (context, index) {
