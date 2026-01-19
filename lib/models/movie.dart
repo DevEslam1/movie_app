@@ -46,6 +46,12 @@ class Movie {
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
+    final String posterUrl = json['Poster'] ?? '';
+    final List<String> imagesList = List<String>.from(json['Images'] ?? []);
+    final String finalPoster = posterUrl.isNotEmpty && posterUrl != 'N/A'
+        ? posterUrl
+        : (imagesList.isNotEmpty ? imagesList[0] : '');
+
     return Movie(
       title: json['Title'] ?? '',
       year: int.tryParse(json['Year'] ?? '0') ?? 0,
@@ -60,14 +66,14 @@ class Movie {
       language: json['Language'] ?? '',
       country: json['Country'] ?? '',
       awards: json['Awards'] ?? '',
-      poster: json['Poster'] ?? '',
+      poster: finalPoster,
       metascore: double.tryParse(json['Metascore'] ?? '0.0') ?? 0.0,
       imdbRating: double.tryParse(json['imdbRating'] ?? '0.0') ?? 0.0,
       imdbVotes: json['imdbVotes'] ?? '',
       imdbID: json['imdbID'] ?? '',
       type: json['Type'] ?? '',
       response: json['Response'] ?? '',
-      images: List<String>.from(json['Images'] ?? []),
+      images: imagesList,
     );
   }
 }

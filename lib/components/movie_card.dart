@@ -127,7 +127,7 @@ class _MovieCardState extends State<MovieCard>
             )
           : FadeInImage.memoryNetwork(
               placeholder: kTransparentImage,
-              image: widget.movie.images[0],
+              image: widget.movie.poster,
               fit: BoxFit.cover,
               height: 100,
               width: 70,
