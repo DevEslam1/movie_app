@@ -4,6 +4,7 @@ import 'package:movie_app/presentation/screens/home/home_screen.dart';
 import 'package:movie_app/presentation/screens/categories/categories_screen.dart';
 import 'package:movie_app/presentation/screens/search/search_screen.dart';
 import 'package:movie_app/presentation/screens/watchlist/watchlist_screen.dart';
+import 'package:movie_app/presentation/screens/profile/profile_screen.dart';
 import 'package:movie_app/core/theme/app_colors.dart';
 import 'package:movie_app/core/theme/app_dimensions.dart';
 
@@ -22,7 +23,7 @@ class _MainNavigationState extends State<MainNavigation> {
     const CategoriesScreen(),
     const SearchScreen(),
     const WatchlistScreen(),
-    const Scaffold(body: Center(child: Text('Profile'))),
+    const ProfileScreen(),
   ];
 
   @override
