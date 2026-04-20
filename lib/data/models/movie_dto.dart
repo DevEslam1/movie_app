@@ -1,6 +1,8 @@
-class Movie {
+import '../../domain/entities/movie.dart';
+
+class MovieDto {
   final String title;
-  final int year;
+  final String year;
   final String rated;
   final String released;
   final String runtime;
@@ -13,15 +15,15 @@ class Movie {
   final String country;
   final String awards;
   final String poster;
-  final double metascore;
-  final double imdbRating;
+  final String metascore;
+  final String imdbRating;
   final String imdbVotes;
-  final String imdbID;
+  final String imdbId;
   final String type;
-  final String response;
-  final List<String> images;
+  final List<String>? images;
+  final bool? comingSoon;
 
-  Movie({
+  MovieDto({
     required this.title,
     required this.year,
     required this.rated,
@@ -39,22 +41,16 @@ class Movie {
     required this.metascore,
     required this.imdbRating,
     required this.imdbVotes,
-    required this.imdbID,
+    required this.imdbId,
     required this.type,
-    required this.response,
-    required this.images,
+    this.images,
+    this.comingSoon,
   });
 
-  factory Movie.fromJson(Map<String, dynamic> json) {
-    final String posterUrl = json['Poster'] ?? '';
-    final List<String> imagesList = List<String>.from(json['Images'] ?? []);
-    final String finalPoster = posterUrl.isNotEmpty && posterUrl != 'N/A'
-        ? posterUrl
-        : (imagesList.isNotEmpty ? imagesList[0] : '');
-
-    return Movie(
+  factory MovieDto.fromJson(Map<String, dynamic> json) {
+    return MovieDto(
       title: json['Title'] ?? '',
-      year: int.tryParse(json['Year'] ?? '0') ?? 0,
+      year: json['Year'] ?? '',
       rated: json['Rated'] ?? '',
       released: json['Released'] ?? '',
       runtime: json['Runtime'] ?? '',
@@ -66,14 +62,40 @@ class Movie {
       language: json['Language'] ?? '',
       country: json['Country'] ?? '',
       awards: json['Awards'] ?? '',
-      poster: finalPoster,
-      metascore: double.tryParse(json['Metascore'] ?? '0.0') ?? 0.0,
-      imdbRating: double.tryParse(json['imdbRating'] ?? '0.0') ?? 0.0,
+      poster: json['Poster'] ?? '',
+      metascore: json['Metascore'] ?? '',
+      imdbRating: json['imdbRating'] ?? '',
       imdbVotes: json['imdbVotes'] ?? '',
-      imdbID: json['imdbID'] ?? '',
+      imdbId: json['imdbID'] ?? '',
       type: json['Type'] ?? '',
-      response: json['Response'] ?? '',
-      images: imagesList,
+      images: json['Images'] != null ? List<String>.from(json['Images']) : null,
+      comingSoon: json['ComingSoon'],
+    );
+  }
+
+  Movie toDomain() {
+    return Movie(
+      title: title,
+      year: year,
+      rated: rated,
+      released: released,
+      runtime: runtime,
+      genres: genre.split(', ').toList(),
+      director: director,
+      writer: writer,
+      actors: actors.split(', ').toList(),
+      plot: plot,
+      language: language,
+      country: country,
+      awards: awards,
+      posterUrl: poster,
+      metascore: metascore,
+      imdbRating: imdbRating,
+      imdbVotes: imdbVotes,
+      imdbId: imdbId,
+      type: type,
+      imageUrls: images ?? [],
+      comingSoon: comingSoon ?? false,
     );
   }
 }
