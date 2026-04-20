@@ -9,6 +9,7 @@ import 'package:movie_app/presentation/widgets/hero_movie_card.dart';
 import 'package:movie_app/presentation/widgets/movie_carousel.dart';
 import 'package:movie_app/presentation/widgets/genre_chip.dart';
 import 'package:movie_app/presentation/widgets/shimmer_loading.dart';
+import 'package:movie_app/presentation/screens/movie_grid/movie_grid_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -113,7 +114,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       MovieCarousel(
                         title: 'Trending',
                         movies: trendingMovies,
-                        onSeeAll: () {},
+                        onSeeAll: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieGridScreen(
+                                title: 'Trending',
+                                movies: trendingMovies,
+                              ),
+                            ),
+                          );
+                        },
                       ),
 
                     const SizedBox(height: AppDimensions.m),
@@ -123,7 +134,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       MovieCarousel(
                         title: 'Popular in $_selectedGenre',
                         movies: genreMovies,
-                        onSeeAll: () {},
+                        onSeeAll: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieGridScreen(
+                                title: 'Popular in $_selectedGenre',
+                                movies: genreMovies,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     
                     // Bottom spacing for glass nav
