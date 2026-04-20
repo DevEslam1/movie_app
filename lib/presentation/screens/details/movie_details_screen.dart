@@ -9,6 +9,7 @@ import 'package:movie_app/presentation/widgets/cached_poster_image.dart';
 import 'package:movie_app/presentation/widgets/rating_badge.dart';
 import 'package:movie_app/presentation/widgets/genre_chip.dart';
 import 'package:movie_app/presentation/screens/image_viewer/full_screen_image.dart';
+import 'package:movie_app/presentation/screens/player/mock_video_player_screen.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   final Movie movie;
@@ -189,7 +190,12 @@ class MovieDetailsScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MockVideoPlayerScreen(movie: movie),
+          ),
+        ),
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.surface,
         icon: const Icon(Icons.play_arrow_rounded),

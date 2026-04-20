@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:movie_app/presentation/providers/movie_provider.dart';
+import 'package:movie_app/core/constants/app_constants.dart';
 import 'package:movie_app/core/theme/app_colors.dart';
 import 'package:movie_app/core/theme/app_dimensions.dart';
 import 'package:movie_app/core/theme/app_text_styles.dart';
@@ -42,28 +43,26 @@ class _HomeScreenState extends State<HomeScreen> {
               // Top App Bar
               SliverAppBar(
                 floating: true,
-                backgroundColor: Colors.transparent,
+                backgroundColor: AppColors.surface.withValues(alpha: 0.9),
                 surfaceTintColor: Colors.transparent,
-                title: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        gradient: AppColors.primaryGradient,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Icon(Icons.movie_filter_rounded, color: AppColors.surface, size: 20),
-                    ),
-                    const SizedBox(width: 12),
-                    Text('CineStream', style: AppTextStyles.titleLarge),
-                  ],
-                ),
-                actions: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.notifications_none_rounded),
+                leading: const Icon(Icons.menu, color: Colors.white),
+                title: Text(
+                  AppConstants.appName,
+                  style: AppTextStyles.titleLarge.copyWith(
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2,
                   ),
-                  const SizedBox(width: 8),
+                ),
+                centerTitle: true,
+                actions: const [
+                  Padding(
+                    padding: EdgeInsets.only(right: 16.0),
+                    child: CircleAvatar(
+                      radius: 16,
+                      backgroundColor: AppColors.primary,
+                      child: Icon(Icons.person, size: 20, color: Colors.black),
+                    ),
+                  ),
                 ],
               ),
 
@@ -73,7 +72,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   delegate: SliverChildListDelegate([
                     const SizedBox(height: AppDimensions.m),
                     
-                    // Featured Section
+                    // Now Playing Section
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: AppDimensions.m),
+                      child: Text(
+                        'Now Playing',
+                        style: AppTextStyles.titleLarge.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                        ),
+                      ),
+                    ),
                     if (featuredMovie != null) ...[
                       HeroMovieCard(movie: featuredMovie),
                     ],
@@ -82,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     // Genre Section
                     SizedBox(
-                      height: 48,
+                      height: 40,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: provider.allGenres.length,
@@ -97,12 +106,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
 
-                    const SizedBox(height: AppDimensions.m),
+                    const SizedBox(height: AppDimensions.xl),
 
                     // Trending Section
                     if (trendingMovies.isNotEmpty)
                       MovieCarousel(
-                        title: 'Trending Now',
+                        title: 'Trending',
                         movies: trendingMovies,
                         onSeeAll: () {},
                       ),

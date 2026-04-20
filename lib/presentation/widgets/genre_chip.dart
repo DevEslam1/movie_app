@@ -26,14 +26,22 @@ class GenreChip extends StatelessWidget {
           vertical: AppDimensions.s,
         ),
         decoration: BoxDecoration(
-          gradient: isSelected ? AppColors.primaryGradient : null,
-          color: isSelected ? null : AppColors.surfaceContainerHigh,
+          color: isSelected ? AppColors.primary : AppColors.surfaceContainerHigh,
           borderRadius: BorderRadius.circular(AppDimensions.radiusXL),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: AppColors.primary.withValues(alpha: 0.3),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  )
+                ]
+              : null,
         ),
         child: Text(
           label,
           style: AppTextStyles.labelLarge.copyWith(
-            color: isSelected ? AppColors.surface : AppColors.onSurface,
+            color: isSelected ? Colors.black : Colors.white,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),

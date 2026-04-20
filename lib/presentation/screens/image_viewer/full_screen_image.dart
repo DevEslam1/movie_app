@@ -25,7 +25,7 @@ class FullScreenImage extends StatelessWidget {
                 child: InteractiveViewer(
                   child: CachedPosterImage(
                     imageUrl: imageUrls[index],
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                   ),
                 ),
               );

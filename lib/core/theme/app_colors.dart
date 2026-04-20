@@ -1,47 +1,36 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Foundation (Surface)
-  static const Color surface = Color(0xFF060E20);
-  static const Color surfaceContainerLow = Color(0xFF091328);
-  static const Color surfaceContainer = Color(0xFF0F1930);
-  static const Color surfaceContainerHigh = Color(0xFF141F38);
-  static const Color surfaceContainerHighest = Color(0xFF192540);
-
-  // Accents (Primary)
-  static const Color primary = Color(0xFF39B8FD);
-  static const Color primaryContainer = Color(0xFF1FAAEF);
-  static const Color secondary = Color(0xFF48ACFF);
-  static const Color tertiary = Color(0xFFA9A0FF);
-
-  // Content (On Surface)
-  static const Color onSurface = Color(0xFFDEE5FF);
-  static const Color onSurfaceVariant = Color(0xFFA3AAC4);
-  static const Color outline = Color(0xFF6D758C);
-  static const Color outlineVariant = Color(0xFF40485D);
-
-  // Status
-  static const Color error = Color(0xFFFFB4AB);
-  static const Color warning = Color(0xFFFFB900);
-  static const Color success = Color(0xFF00D1FF);
-  static const Color rating = Color(0xFFFFB800);
-
-  // Gradients
+  // Primary Palette
+  static const Color primary = Color(0xFF3EB4F0); // Vibrant Light Blue from reference
+  static const Color secondary = Color(0xFF1E293B);
+  
+  // Background/Surface
+  static const Color surface = Color(0xFF0D1117); // Deep Navy/Black
+  static const Color surfaceContainer = Color(0xFF161B22);
+  static const Color surfaceContainerHigh = Color(0xFF21262D);
+  
+  // Text
+  static const Color onSurface = Color(0xFFF0F6FC);
+  static const Color onSurfaceVariant = Color(0xFF8B949E);
+  
+  // Accents
+  static const Color accent = Color(0xFF58A6FF);
+  static const Color tertiary = Color(0xFF58A6FF);
+  static const Color error = Color(0xFFF85149);
+  static const Color rating = Color(0xFFFFC107); // Amber color for ratings
+  
+  // Containers & Outlines
+  static const Color primaryContainer = Color(0xFF1E293B);
+  static const Color outline = Color(0xFF30363D);
+  static const Color outlineVariant = Color(0xFF21262D);
+  static const Color surfaceContainerLow = Color(0xFF0D1117);
+  static const Color surfaceContainerHighest = Color(0xFF30363D);
+  
+  // Gradient
   static const LinearGradient primaryGradient = LinearGradient(
-    colors: [primary, primaryContainer],
+    colors: [Color(0xFF3EB4F0), Color(0xFF1D9BF0)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-  );
-
-  static const LinearGradient surfaceGradient = LinearGradient(
-    colors: [surface, surfaceContainerHighest],
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-  );
-
-  static const LinearGradient movieCardOverlay = LinearGradient(
-    colors: [Colors.transparent, surface],
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
   );
 }

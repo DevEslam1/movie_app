@@ -22,6 +22,7 @@ class _MainNavigationState extends State<MainNavigation> {
     const CategoriesScreen(),
     const SearchScreen(),
     const WatchlistScreen(),
+    const Scaffold(body: Center(child: Text('Profile'))),
   ];
 
   @override
@@ -54,30 +55,37 @@ class _MainNavigationState extends State<MainNavigation> {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 selectedItemColor: AppColors.primary,
-                unselectedItemColor: AppColors.onSurfaceVariant,
+                unselectedItemColor: Colors.white.withValues(alpha: 0.5),
                 showSelectedLabels: true,
-                showUnselectedLabels: false,
+                showUnselectedLabels: true,
+                selectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                unselectedLabelStyle: const TextStyle(fontSize: 10),
                 type: BottomNavigationBarType.fixed,
                 items: const [
                   BottomNavigationBarItem(
                     icon: Icon(Icons.home_outlined),
                     activeIcon: Icon(Icons.home),
-                    label: 'Home',
+                    label: 'HOME',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.grid_view_outlined),
-                    activeIcon: Icon(Icons.grid_view),
-                    label: 'Explore',
+                    icon: Icon(Icons.explore_outlined),
+                    activeIcon: Icon(Icons.explore),
+                    label: 'DISCOVER',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.search_outlined),
                     activeIcon: Icon(Icons.search),
-                    label: 'Search',
+                    label: 'SEARCH',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.bookmark_border),
                     activeIcon: Icon(Icons.bookmark),
-                    label: 'Watchlist',
+                    label: 'WATCHLIST',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person_outline),
+                    activeIcon: Icon(Icons.person),
+                    label: 'PROFILE',
                   ),
                 ],
               ),

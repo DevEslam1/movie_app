@@ -20,12 +20,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categories'),
+        centerTitle: true,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
           child: Consumer<MovieProvider>(
             builder: (context, provider, child) {
               return SizedBox(
-                height: 48,
+                height: 40,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: AppDimensions.m),
@@ -51,8 +52,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           return GridView.builder(
             padding: const EdgeInsets.all(AppDimensions.m),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.65,
+              crossAxisCount: 3,
+              childAspectRatio: 0.55,
               crossAxisSpacing: AppDimensions.m,
               mainAxisSpacing: AppDimensions.m,
             ),

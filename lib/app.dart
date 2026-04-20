@@ -4,6 +4,7 @@ import 'core/theme/app_theme.dart';
 import 'presentation/screens/splash/splash_screen.dart';
 import 'presentation/providers/movie_provider.dart';
 import 'presentation/providers/watchlist_provider.dart';
+import 'core/constants/app_constants.dart';
 import 'data/datasources/local_movie_datasource.dart';
 import 'data/repositories/movie_repository_impl.dart';
 import 'domain/usecases/get_all_movies.dart';
@@ -30,7 +31,7 @@ class CineStreamApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'CineStream',
+        title: AppConstants.appName,
         debugShowCheckedModeBanner: false,
         theme: AppTheme.darkTheme,
         home: const SplashScreen(),
